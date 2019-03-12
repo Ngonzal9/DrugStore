@@ -63,6 +63,36 @@ namespace DrugStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_User1_512 {
+            get {
+                object obj = ResourceManager.GetObject("Add_User1-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap drugs_23_113662 {
+            get {
+                object obj = ResourceManager.GetObject("drugs-23-113662", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HAND_MONEY_512 {
+            get {
+                object obj = ResourceManager.GetObject("HAND_MONEY-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icono_medicina {
             get {
                 object obj = ResourceManager.GetObject("Icono medicina", resourceCulture);
@@ -73,9 +103,19 @@ namespace DrugStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Icono_medicina_thumb {
+        internal static System.Drawing.Bitmap notes_512 {
             get {
-                object obj = ResourceManager.GetObject("Icono medicina_thumb", resourceCulture);
+                object obj = ResourceManager.GetObject("notes-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Server {
+            get {
+                object obj = ResourceManager.GetObject("Server", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

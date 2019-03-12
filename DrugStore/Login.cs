@@ -31,5 +31,22 @@ namespace DrugStore
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string User = user.Text;
+            string Password = password.Text;
+            if (DataBase.ValidateLogin(User,Password))
+            {
+                Hide();
+                Form menu = new Menu(User);
+                menu.Show();
+            }
+            else
+            {
+                MessageBox.Show("Login no valido");
+            }
+        }
+
     }
 }
