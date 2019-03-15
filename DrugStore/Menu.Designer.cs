@@ -44,6 +44,7 @@
             this.Drugs_Inventory = new System.Windows.Forms.PictureBox();
             this.User_Creation = new System.Windows.Forms.PictureBox();
             this.Home_Button = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sales)).BeginInit();
@@ -85,9 +86,9 @@
             this.label3.Location = new System.Drawing.Point(576, 17);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 37);
+            this.label3.Size = new System.Drawing.Size(145, 37);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Connect";
+            this.label3.Text = "Connect:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
@@ -253,12 +254,25 @@
             this.Home_Button.TabStop = false;
             this.Home_Button.Click += new System.EventHandler(this.Home_Button_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label9.Location = new System.Drawing.Point(712, 17);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 37);
+            this.label9.TabIndex = 18;
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1600, 865);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button2);
@@ -307,5 +321,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

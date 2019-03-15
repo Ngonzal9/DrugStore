@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Client;
+using System.IO;
 
 namespace DrugStore
 {
@@ -17,28 +19,23 @@ namespace DrugStore
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
+            try
+            {
+                DataBase.GetPath(File.ReadAllText(@"C:\Users\Public\Documents\serverpath.txt"));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No esta conectado a la base de datos, ingrese el nombre del servidor\n" +
+                    "Path:" + @"C: \Users\Public\Documents\serverpath.txt");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User = user.Text;
-            string Password = password.Text;
-            if (DataBase.ValidateLogin(User,Password))
+            Employee EmployeeLog = new Employee();
+            EmployeeLog.User = user.Text;
+            EmployeeLog.Password = password.Text;
+            if (true/*DataBase.ValidateLogin(EmployeeLog)*/)
             {
                 Hide();
                 Form menu = new Menu();
@@ -50,9 +47,5 @@ namespace DrugStore
             }
         }
 
-        private void user_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

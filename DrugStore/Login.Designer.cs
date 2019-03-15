@@ -51,8 +51,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(666, 100);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
             this.textBox1.Text = "Welcome to  DrugStore Manager!";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -64,6 +64,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(172, 37);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TabStop = false;
             this.textBox2.Text = "Login";
             // 
             // textBox3
@@ -75,9 +76,9 @@
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(152, 37);
-            this.textBox3.TabIndex = 2;
+            this.textBox3.TabIndex = 5;
+            this.textBox3.TabStop = false;
             this.textBox3.Text = "Password";
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // user
             // 
@@ -86,8 +87,7 @@
             this.user.Margin = new System.Windows.Forms.Padding(4);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(316, 44);
-            this.user.TabIndex = 3;
-            this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
+            this.user.TabIndex = 0;
             // 
             // password
             // 
@@ -96,7 +96,8 @@
             this.password.Margin = new System.Windows.Forms.Padding(4);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(316, 44);
-            this.password.TabIndex = 4;
+            this.password.TabIndex = 1;
+            this.password.UseSystemPasswordChar = true;
             // 
             // textBox6
             // 
@@ -108,6 +109,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(172, 25);
             this.textBox6.TabIndex = 5;
+            this.textBox6.TabStop = false;
             this.textBox6.Text = "Version 1.00";
             // 
             // button1
@@ -119,7 +121,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 54);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -133,7 +135,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(152, 54);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Close";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -164,7 +166,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

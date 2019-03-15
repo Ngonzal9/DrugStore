@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using Client;
 
 namespace DrugStore
 {
@@ -17,6 +19,14 @@ namespace DrugStore
         {
             InitializeComponent();
             label2.Text = Login.User;
+            try
+            {
+                DataBase.GetPath(File.ReadAllText(@"C:\Users\Public\Documents\serverpath.txt"));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No esta conectado a la base de datos, ingrese el nombre delservidor");
+            }
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -58,11 +68,13 @@ namespace DrugStore
         {
             if (DataBase.VerifyConnection())
             {
-                label3.Text = "Connected";
+                label9.Text = "Connected";
+                label9.ForeColor = System.Drawing.Color.Chartreuse;
             }
             else
             {
-                label3.Text = "Disconnected";
+                label9.Text = "Disconnected";
+                label9.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -77,6 +89,11 @@ namespace DrugStore
             Login Change = new Login();
             Change.Show();
             Close();
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
 
         }
     }

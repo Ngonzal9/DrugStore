@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +120,12 @@
     <None Include="Resources\drugicon.png" />
     <None Include="Resources\a-drug-store-vector-1135958 %282%29.jpg" />
     <Content Include="Resources\Icono medicina_thumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\Client.csproj">
+      <Project>{f8c0a636-e227-4365-b3c8-831a4d64a658}</Project>
+      <Name>Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
