@@ -12,10 +12,12 @@ namespace DrugStore
         public static SqlConnection SQLcom;
         public static SqlCommand Cmd;
         public static SqlDataReader Reader;
+        public static string Path;
 
         public static void GetPath(string path)
         {
             SQLcom = new SqlConnection(string.Format(@path));
+            Path = path;
         }
         public static bool VerifyConnection()
         {
@@ -25,7 +27,7 @@ namespace DrugStore
                 SQLcom.Close();
                 return true;
             }
-            catch (SqlException)
+            catch (Exception)
             {
                 return false;
             }

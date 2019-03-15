@@ -12,12 +12,11 @@ namespace DrugStore
 {
     public partial class Menu : Form
     {
-        Form Log = new Login();
-        public Menu(string user)
+        
+        public Menu()
         {
             InitializeComponent();
-            label2.Text = user;
-            
+            label2.Text = Login.User;
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -52,6 +51,32 @@ namespace DrugStore
 
         private void Home_Button_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            if (DataBase.VerifyConnection())
+            {
+                label3.Text = "Connected";
+            }
+            else
+            {
+                label3.Text = "Disconnected";
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            PathGetter pathGetter = new PathGetter();
+            pathGetter.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login Change = new Login();
+            Change.Show();
+            Close();
 
         }
     }

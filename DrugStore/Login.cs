@@ -12,6 +12,8 @@ namespace DrugStore
 {
     public partial class Login : Form
     {
+        public static string User;
+
         public Login()
         {
             InitializeComponent();
@@ -34,12 +36,12 @@ namespace DrugStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string User = user.Text;
+            User = user.Text;
             string Password = password.Text;
             if (DataBase.ValidateLogin(User,Password))
             {
                 Hide();
-                Form menu = new Menu(User);
+                Form menu = new Menu();
                 menu.Show();
             }
             else
@@ -48,5 +50,9 @@ namespace DrugStore
             }
         }
 
+        private void user_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

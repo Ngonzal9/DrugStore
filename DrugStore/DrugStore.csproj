@@ -59,6 +59,12 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="PathGetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PathGetter.Designer.cs">
+      <DependentUpon>PathGetter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login.resx">
@@ -66,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PathGetter.resx">
+      <DependentUpon>PathGetter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,6 +116,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drugicon.png" />
+    <None Include="Resources\a-drug-store-vector-1135958 %282%29.jpg" />
+    <Content Include="Resources\Icono medicina_thumb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -63,9 +63,29 @@ namespace DrugStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap a_drug_store_vector_1135958__2_ {
+            get {
+                object obj = ResourceManager.GetObject("a-drug-store-vector-1135958 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add_User1_512 {
             get {
                 object obj = ResourceManager.GetObject("Add_User1-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap drugicon {
+            get {
+                object obj = ResourceManager.GetObject("drugicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
