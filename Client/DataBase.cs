@@ -34,10 +34,42 @@ namespace Client
                 return false;
             }
         }
+
+        public static void AddUser(Employee newEmployee)
+        {
+            Cmd = new SqlCommand("insert into Users(Usuario,Password,Name,LastName) values(@Usuario,@Password,@Name,@LastName)", SQLcom);
+            Cmd.Parameters.AddWithValue("@Usuario",newEmployee.User);
+            Cmd.Parameters.AddWithValue("@Password", newEmployee.Password);
+            Cmd.Parameters.AddWithValue("@Name", newEmployee.Name);
+            Cmd.Parameters.AddWithValue("@LastName", newEmployee.LastName);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+        }
+
+        public static void DeleteUser(string text)
+        {
+            Cmd = new SqlCommand("Select Usuario from Users where @Usuario=Usuario",SQLcom);
+            Cmd.Parameters.AddWithValue("@Usuario",text);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            if (!Reader.Read())
+            {
+                SQLcom.Close();
+                throw new Exception();
+            }
+            SQLcom.Close();
+            Cmd = new SqlCommand("delete from Users where Usuario=@Usuario", SQLcom);
+            Cmd.Parameters.AddWithValue("@Usuario", text);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+        }
+
         public static bool ValidateLogin(Employee myEmployee)
         {
-            Cmd = new SqlCommand("Select Password form Users where @User=User");
-            Cmd.Parameters.AddWithValue("@User", myEmployee.User);
+            Cmd = new SqlCommand("Select Password form Users where @Usuario=Usuario");
+            Cmd.Parameters.AddWithValue("@Usuario", myEmployee.User);
             SQLcom.Open();
             Reader = Cmd.ExecuteReader();
             if (Reader.Read())

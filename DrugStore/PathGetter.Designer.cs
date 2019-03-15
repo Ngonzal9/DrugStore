@@ -57,7 +57,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Chartreuse;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(231, 145);
+            this.button1.Location = new System.Drawing.Point(424, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 68);
             this.button1.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(431, 145);
+            this.button2.Location = new System.Drawing.Point(239, 145);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(161, 68);
             this.button2.TabIndex = 3;

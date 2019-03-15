@@ -27,6 +27,16 @@ namespace DrugStore
             {
                 MessageBox.Show("No esta conectado a la base de datos, ingrese el nombre delservidor");
             }
+            if (DataBase.VerifyConnection())
+            {
+                label9.Text = "Connected";
+                label9.ForeColor = System.Drawing.Color.Chartreuse;
+            }
+            else 
+            {
+                label9.Text = "Disconnected";
+                label9.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -61,7 +71,8 @@ namespace DrugStore
 
         private void Home_Button_Click(object sender, EventArgs e)
         {
-
+            UserWindow userWindow = new UserWindow();
+            userWindow.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
