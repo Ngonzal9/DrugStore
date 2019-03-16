@@ -17,11 +17,48 @@ namespace Client
         public static SqlDataAdapter TableAdapter;
         public static string Path;
 
+        public static DataTable GetSalesTable()
+        {
+            SQLcom.Open();
+            TableAdapter = new SqlDataAdapter("select * from Sales", SQLcom);
+            DataTable Dt = new DataTable();
+            TableAdapter.Fill(Dt);
+            SQLcom.Close();
+            return Dt;
+        }
+
+        public static object[] GetUsers()
+        {
+            List<string> Temp = new List<string>();
+            Cmd = new SqlCommand("Select Usuario from Users", SQLcom);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            while (Reader.Read())
+            {
+                Temp.Add(Reader.GetString(0));
+            }
+            string[] Users = Temp.ToArray();
+            SQLcom.Close();
+            return Users;
+        }
+
         public static void GetPath(string path)
         {
             SQLcom = new SqlConnection(string.Format(@"{0}", path));
             Path = path;
             File.WriteAllText(@"C:\Users\Public\Documents\serverpath.txt", Path);
+        }
+
+        public static DataTable GetSalesByUser(string user)
+        {
+            SQLcom.Open();
+            Cmd = new SqlCommand("select * from Sales where @Seller=Seller", SQLcom);
+            Cmd.Parameters.AddWithValue("@Seller", user);
+            TableAdapter = new SqlDataAdapter(Cmd);
+            DataTable Dt = new DataTable();
+            TableAdapter.Fill(Dt);
+            SQLcom.Close();
+            return Dt;
         }
 
         public static string GetPrice(string drug)
@@ -209,7 +246,7 @@ namespace Client
         public static DataTable FillDataTable()
         {
             SQLcom.Open();
-            TableAdapter = new SqlDataAdapter("select * from Users", SQLcom);
+            TableAdapter = new SqlDataAdapter("select Usuario,Name,LastName from Users", SQLcom);
             DataTable Dt = new DataTable();
             TableAdapter.Fill(Dt);
             SQLcom.Close();

@@ -128,5 +128,11 @@ namespace DrugStore
             SalesModule newSales = new SalesModule();
             newSales.Show();
         }
+
+        private void Sales_Click(object sender, EventArgs e)
+        {
+            DisplaySales display = new DisplaySales();
+            display.Show();
+        }
     }
 }

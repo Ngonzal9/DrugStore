@@ -218,6 +218,7 @@
             this.Sales.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Sales.TabIndex = 9;
             this.Sales.TabStop = false;
+            this.Sales.Click += new System.EventHandler(this.Sales_Click);
             // 
             // Drugs_Inventory
             // 

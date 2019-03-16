@@ -28,11 +28,13 @@ namespace DrugStore
                 DataBase.AddUser(newEmployee);
                 MessageBox.Show("Creacion exitosa!");
                 dataGridView1.DataSource = DataBase.FillDataTable();
+                DeleteBox();
 
             }
             catch (Exception)
             {
                 MessageBox.Show("Oops! Hubo un problema, intente de nuevo");
+                DeleteBox();
             }
             
         }
@@ -49,10 +51,12 @@ namespace DrugStore
                 DataBase.DeleteUser(textBox5.Text);
                 MessageBox.Show("Borrado con exito!");
                 dataGridView1.DataSource = DataBase.FillDataTable();
+                DeleteBox();
             }
             catch (Exception)
             {
                 MessageBox.Show("Usuario no existe","Error");
+                DeleteBox();
             }
         }
 
@@ -69,6 +73,13 @@ namespace DrugStore
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+        private void DeleteBox()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox5.Text = "";
         }
     }
 }
