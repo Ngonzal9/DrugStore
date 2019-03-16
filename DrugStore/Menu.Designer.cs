@@ -249,6 +249,7 @@
             this.User_Creation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.User_Creation.TabIndex = 7;
             this.User_Creation.TabStop = false;
+            this.User_Creation.Click += new System.EventHandler(this.User_Creation_Click);
             // 
             // Home_Button
             // 

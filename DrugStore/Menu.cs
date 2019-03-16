@@ -107,5 +107,11 @@ namespace DrugStore
         {
 
         }
+
+        private void User_Creation_Click(object sender, EventArgs e)
+        {
+            DrugInventory inventory = new DrugInventory();
+            inventory.Show();
+        }
     }
 }

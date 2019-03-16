@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
+using System.Data;
 
 namespace Client
 {
@@ -13,6 +14,7 @@ namespace Client
         public static SqlConnection SQLcom;
         public static SqlCommand Cmd;
         public static SqlDataReader Reader;
+        public static SqlDataAdapter TableAdapter;
         public static string Path;
 
         public static void GetPath(string path)
@@ -21,6 +23,18 @@ namespace Client
             Path = path;
             File.WriteAllText(@"C:\Users\Public\Documents\serverpath.txt", Path);
         }
+
+        public static void CreateDrug(Drug newDrug)
+        {
+            Cmd = new SqlCommand("insert into Inventario(Medicamento,Precio,Cantidad) values(@Medicamento,@Precio,@Cantidad)", SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", newDrug.DrugName);
+            Cmd.Parameters.AddWithValue("@Precio", newDrug.Price);
+            Cmd.Parameters.AddWithValue("@Cantidad", newDrug.Qty);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+        }
+
         public static bool VerifyConnection()
         {
             try
@@ -65,6 +79,24 @@ namespace Client
             Cmd.ExecuteNonQuery();
             SQLcom.Close();
         }
+        public static void DeleteDrug(string text)
+        {
+            Cmd = new SqlCommand("Select Medicamento from Inventario where @Medicamento=Medicamento", SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", text);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            if (!Reader.Read())
+            {
+                SQLcom.Close();
+                throw new Exception();
+            }
+            SQLcom.Close();
+            Cmd = new SqlCommand("delete from Inventario where Medicamento=@Medicamento", SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", text);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+        }
 
         public static bool ValidateLogin(Employee myEmployee)
         {
@@ -89,6 +121,25 @@ namespace Client
                 SQLcom.Close();
                 return false;
             }
+        }
+
+        public static DataTable FillDataTable()
+        {
+            SQLcom.Open();
+            TableAdapter = new SqlDataAdapter("select * from Users", SQLcom);
+            DataTable Dt = new DataTable();
+            TableAdapter.Fill(Dt);
+            SQLcom.Close();
+            return Dt;
+        }
+        public static DataTable FillDataInventory()
+        {
+            SQLcom.Open();
+            TableAdapter = new SqlDataAdapter("select * from Inventario", SQLcom);
+            DataTable Dt = new DataTable();
+            TableAdapter.Fill(Dt);
+            SQLcom.Close();
+            return Dt;
         }
     }
 }

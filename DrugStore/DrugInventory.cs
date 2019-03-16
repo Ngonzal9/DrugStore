@@ -11,30 +11,30 @@ using Client;
 
 namespace DrugStore
 {
-    public partial class UserWindow : Form
+    public partial class DrugInventory : Form
     {
-        public UserWindow()
+        public DrugInventory()
         {
             InitializeComponent();
-            dataGridView1.DataSource = DataBase.FillDataTable();
+            dataGridView1.DataSource = DataBase.FillDataInventory();
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                Employee newEmployee = new Employee(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
-                DataBase.AddUser(newEmployee);
+                Drug newDrug = new Drug(textBox1.Text, float.Parse(textBox2.Text), int.Parse(textBox3.Text));
+                DataBase.CreateDrug(newDrug);
                 MessageBox.Show("Creacion exitosa!");
-                dataGridView1.DataSource = DataBase.FillDataTable();
-
+                dataGridView1.DataSource = DataBase.FillDataInventory();
             }
             catch (Exception)
             {
-                MessageBox.Show("Oops! Hubo un problema, intente de nuevo");
+                MessageBox.Show("Oops! algo ocurrio, intentelo de nuevo");
+                dataGridView1.DataSource = DataBase.FillDataInventory();
             }
             
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,29 +46,14 @@ namespace DrugStore
         {
             try
             {
-                DataBase.DeleteUser(textBox5.Text);
+                DataBase.DeleteDrug(textBox5.Text);
                 MessageBox.Show("Borrado con exito!");
-                dataGridView1.DataSource = DataBase.FillDataTable();
+                dataGridView1.DataSource = DataBase.FillDataInventory();
             }
             catch (Exception)
             {
-                MessageBox.Show("Usuario no existe","Error");
+                MessageBox.Show("Usuario no existe", "Error");
             }
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
