@@ -29,5 +29,10 @@ namespace DrugStore
         {
             Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = DataBase.GetSalesTable();
+        }
     }
 }
