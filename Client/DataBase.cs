@@ -27,6 +27,18 @@ namespace Client
             return Dt;
         }
 
+        public static void UpdateInventory(string Qty, string Precio, string drug)
+        {
+            Cmd = new SqlCommand("Update Inventario set Cantidad=@Cantidad,Precio=@Precio where Medicamento=@Medicamento",SQLcom);
+            Cmd.Parameters.AddWithValue("@Cantidad", int.Parse(Qty));
+            Cmd.Parameters.AddWithValue("@Precio", float.Parse(Precio));
+            Cmd.Parameters.AddWithValue("@Medicamento", drug);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+
+        }
+
         public static object[] GetUsers()
         {
             List<string> Temp = new List<string>();

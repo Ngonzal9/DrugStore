@@ -81,5 +81,21 @@ namespace DrugStore
             textBox3.Text = "";
             textBox5.Text = "";
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridView1.CurrentRow.Selected = true;
+                string user = dataGridView1.Rows[e.RowIndex].Cells["Usuario"].FormattedValue.ToString();
+                textBox5.Text = user;
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

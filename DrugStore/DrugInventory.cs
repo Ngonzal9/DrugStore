@@ -63,5 +63,37 @@ namespace DrugStore
                 MessageBox.Show("Usuario no existe", "Error");
             }
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridView1.CurrentRow.Selected = true;
+                string drug = dataGridView1.Rows[e.RowIndex].Cells["Medicamento"].FormattedValue.ToString();
+                string Qty = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].FormattedValue.ToString();
+                string precio = dataGridView1.Rows[e.RowIndex].Cells["Precio"].FormattedValue.ToString();
+                Updater update = new Updater(drug,Qty,precio);
+                update.Show();
+
+            }
+            
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DrugInventory_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = DataBase.FillDataInventory();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = DataBase.FillDataInventory();
+        }
+
     }
 }
