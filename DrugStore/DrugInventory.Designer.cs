@@ -79,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(59, 208);
+            this.label3.Location = new System.Drawing.Point(59, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 37);
             this.label3.TabIndex = 3;

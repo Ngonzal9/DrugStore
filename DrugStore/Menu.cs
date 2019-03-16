@@ -14,7 +14,7 @@ namespace DrugStore
 {
     public partial class Menu : Form
     {
-        
+
         public Menu()
         {
             InitializeComponent();
@@ -36,6 +36,7 @@ namespace DrugStore
             {
                 label9.Text = "Disconnected";
                 label9.ForeColor = System.Drawing.Color.Red;
+                
             }
         }
 
@@ -71,8 +72,16 @@ namespace DrugStore
 
         private void Home_Button_Click(object sender, EventArgs e)
         {
-            UserWindow userWindow = new UserWindow();
-            userWindow.Show();
+            if (Login.User == "admin")
+            {
+                UserWindow userWindow = new UserWindow();
+                userWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usted no tiene acceso");
+            }
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -112,6 +121,12 @@ namespace DrugStore
         {
             DrugInventory inventory = new DrugInventory();
             inventory.Show();
+        }
+
+        private void Drugs_Inventory_Click(object sender, EventArgs e)
+        {
+            SalesModule newSales = new SalesModule();
+            newSales.Show();
         }
     }
 }

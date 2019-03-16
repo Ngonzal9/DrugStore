@@ -27,11 +27,19 @@ namespace DrugStore
                 DataBase.CreateDrug(newDrug);
                 MessageBox.Show("Creacion exitosa!");
                 dataGridView1.DataSource = DataBase.FillDataInventory();
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
             }
             catch (Exception)
             {
                 MessageBox.Show("Oops! algo ocurrio, intentelo de nuevo");
                 dataGridView1.DataSource = DataBase.FillDataInventory();
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
             }
             
 

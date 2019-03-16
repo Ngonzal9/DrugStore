@@ -11,6 +11,8 @@ namespace Client
         public string DrugName;
         public float Price;
         public int Qty;
+        public float ITBIS;
+        public float TotalPrice;
        
 
         public Drug(string text, float price, int qty)
@@ -18,6 +20,14 @@ namespace Client
             DrugName = text;
             Price = price;
             Qty= qty;
+        }
+        public Drug(string text, float price, int qty, float iTBIS, float totalPrice)
+        {
+            DrugName = text;
+            Price = price;
+            Qty = qty;
+            ITBIS = iTBIS;
+            TotalPrice = totalPrice;
         }
     }
 }

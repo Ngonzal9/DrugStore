@@ -19,9 +19,54 @@ namespace Client
 
         public static void GetPath(string path)
         {
-            SQLcom = new SqlConnection(string.Format(@"{0}",path));
+            SQLcom = new SqlConnection(string.Format(@"{0}", path));
             Path = path;
             File.WriteAllText(@"C:\Users\Public\Documents\serverpath.txt", Path);
+        }
+
+        public static string GetPrice(string drug)
+        {
+            float temp = 0f;
+            Cmd = new SqlCommand("select Precio from Inventario where @Medicamento = Medicamento",SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", drug);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            if (Reader.Read())
+            {
+                temp = Reader.GetFloat(0);
+            }
+            SQLcom.Close();
+            return temp.ToString();
+        }
+
+        public static string[] GetDrugs()
+        {
+            List<string> Temp = new List<string>();
+            Cmd = new SqlCommand("Select Medicamento from Inventario", SQLcom);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            while (Reader.Read())
+            {
+                Temp.Add(Reader.GetString(0));
+            }
+            string[] Drugs = Temp.ToArray();
+            SQLcom.Close();
+            return Drugs;
+        }
+
+        public static string GetQty(string drug)
+        {
+            int temp = 0;
+            Cmd = new SqlCommand("select Cantidad from Inventario where @Medicamento = Medicamento", SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", drug);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            if (Reader.Read())
+            {
+                temp = Reader.GetInt32(0);
+            }
+            SQLcom.Close();
+            return temp.ToString();
         }
 
         public static void CreateDrug(Drug newDrug)
@@ -52,7 +97,7 @@ namespace Client
         public static void AddUser(Employee newEmployee)
         {
             Cmd = new SqlCommand("insert into Users(Usuario,Password,Name,LastName) values(@Usuario,@Password,@Name,@LastName)", SQLcom);
-            Cmd.Parameters.AddWithValue("@Usuario",newEmployee.User);
+            Cmd.Parameters.AddWithValue("@Usuario", newEmployee.User);
             Cmd.Parameters.AddWithValue("@Password", newEmployee.Password);
             Cmd.Parameters.AddWithValue("@Name", newEmployee.Name);
             Cmd.Parameters.AddWithValue("@LastName", newEmployee.LastName);
@@ -61,10 +106,46 @@ namespace Client
             SQLcom.Close();
         }
 
+        public static void RemoveQty(Drug item)
+        {
+            int temp = 0;
+            Cmd = new SqlCommand("select Cantidad from Inventario where @Medicamento = Medicamento", SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", item.DrugName);
+            SQLcom.Open();
+            Reader = Cmd.ExecuteReader();
+            if (Reader.Read())
+            {
+                temp = Reader.GetInt32(0);
+            }
+            SQLcom.Close();
+            temp = temp - item.Qty;
+            Cmd = new SqlCommand("update Inventario set Cantidad=@Cantidad where Medicamento=@Medicamento", SQLcom);
+            Cmd.Parameters.AddWithValue("@Medicamento", item.DrugName);
+            Cmd.Parameters.AddWithValue("@Cantidad", temp);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+        }
+
+        public static void AddSale(Drug item, DateTime now,string user)
+        {
+            Cmd = new SqlCommand("insert into Sales(Item,Price,Quantity,Seller,Tax,Total,Fecha) values(@Item,@Price,@Quantity,@Seller,@Tax,@Total,@Fecha)", SQLcom);
+            Cmd.Parameters.AddWithValue("@Item",item.DrugName);
+            Cmd.Parameters.AddWithValue("@Price", item.Price);
+            Cmd.Parameters.AddWithValue("@Quantity", item.Qty);
+            Cmd.Parameters.AddWithValue("@Seller", user);
+            Cmd.Parameters.AddWithValue("@Tax", item.ITBIS);
+            Cmd.Parameters.AddWithValue("@Total", item.TotalPrice);
+            Cmd.Parameters.AddWithValue("@Fecha", now);
+            SQLcom.Open();
+            Cmd.ExecuteNonQuery();
+            SQLcom.Close();
+        }
+
         public static void DeleteUser(string text)
         {
-            Cmd = new SqlCommand("Select Usuario from Users where @Usuario=Usuario",SQLcom);
-            Cmd.Parameters.AddWithValue("@Usuario",text);
+            Cmd = new SqlCommand("Select Usuario from Users where @Usuario=Usuario", SQLcom);
+            Cmd.Parameters.AddWithValue("@Usuario", text);
             SQLcom.Open();
             Reader = Cmd.ExecuteReader();
             if (!Reader.Read())
@@ -79,6 +160,7 @@ namespace Client
             Cmd.ExecuteNonQuery();
             SQLcom.Close();
         }
+
         public static void DeleteDrug(string text)
         {
             Cmd = new SqlCommand("Select Medicamento from Inventario where @Medicamento=Medicamento", SQLcom);
@@ -100,7 +182,7 @@ namespace Client
 
         public static bool ValidateLogin(Employee myEmployee)
         {
-            Cmd = new SqlCommand("Select Password form Users where @Usuario=Usuario");
+            Cmd = new SqlCommand("Select Password from Users where @Usuario=Usuario",SQLcom);
             Cmd.Parameters.AddWithValue("@Usuario", myEmployee.User);
             SQLcom.Open();
             Reader = Cmd.ExecuteReader();
@@ -113,6 +195,7 @@ namespace Client
                 }
                 else
                 {
+                    SQLcom.Close();
                     return false;
                 }
             }
@@ -132,6 +215,7 @@ namespace Client
             SQLcom.Close();
             return Dt;
         }
+
         public static DataTable FillDataInventory()
         {
             SQLcom.Open();
@@ -141,5 +225,6 @@ namespace Client
             SQLcom.Close();
             return Dt;
         }
+
     }
 }

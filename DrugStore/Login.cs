@@ -34,8 +34,9 @@ namespace DrugStore
         {
             Employee EmployeeLog = new Employee();
             EmployeeLog.User = user.Text;
+            User = EmployeeLog.User;
             EmployeeLog.Password = password.Text;
-            if (true/*DataBase.ValidateLogin(EmployeeLog)*/)
+            if (DataBase.ValidateLogin(EmployeeLog))
             {
                 Hide();
                 Form menu = new Menu();
@@ -43,6 +44,8 @@ namespace DrugStore
             }
             else
             {
+                user.Text = "";
+                password.Text = "";
                 MessageBox.Show("Login no valido");
             }
         }
@@ -51,6 +54,11 @@ namespace DrugStore
         {
             PathGetter pathGetter = new PathGetter();
             pathGetter.Show();
+        }
+
+        private void user_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

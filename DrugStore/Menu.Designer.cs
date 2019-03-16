@@ -233,6 +233,7 @@
             this.Drugs_Inventory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Drugs_Inventory.TabIndex = 8;
             this.Drugs_Inventory.TabStop = false;
+            this.Drugs_Inventory.Click += new System.EventHandler(this.Drugs_Inventory_Click);
             // 
             // User_Creation
             // 
